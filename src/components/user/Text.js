@@ -5,6 +5,11 @@ import { useNode } from "@craftjs/core";
 
 export const Text = ({text}) => {
   const { connectors: {connect, drag} } = useNode();
+  Text.craft = {
+    rules: {
+        canDrag: (node) => node.data.props.text != "Drag"
+      }
+    }
   return (
      <div 
       ref={ref => connect(drag(ref))}
@@ -13,3 +18,11 @@ export const Text = ({text}) => {
     </div>
   )
 }
+
+// export const Text = () => {...}
+// Text.craft = {
+//   ...
+//   rules: {
+//     canDrag: (node) => node.data.props.text != "Drag"
+//   }
+// }
