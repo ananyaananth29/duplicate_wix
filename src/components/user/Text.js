@@ -1,10 +1,15 @@
 // components/user/Text.js
 import React from "react";
+import { Typography } from "@material-ui/core";
+import { useNode } from "@craftjs/core";
 
-export const Text = ({text, fontSize}) => {
+export const Text = ({text}) => {
+  const { connectors: {connect, drag} } = useNode();
   return (
-      <div>
-         <p style={{fontSize}}>{text}</p>
-      </div>
+     <div 
+      ref={ref => connect(drag(ref))}
+    >
+      <p>{text}</p>
+    </div>
   )
 }
